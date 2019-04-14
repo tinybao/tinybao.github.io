@@ -92,121 +92,17 @@
       
         <p><img src="https:////upload-images.jianshu.io/upload_images/3386108-816ea257591bdcaf.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/390" alt="img"></p>
 <p>Activiti 是一个针对企业用户、开发人员 、系统管理员的轻量级工作流业务管理平台，其核心是使用 java 开发的快速 、 稳定的 BPMN2.0 流程引擎 。它可以与 spring 完美集成。</p>
-<p>创始人 Tom Baeyens 曾经是 JBoss jBPM 的项目架构师，所以之前接触过 jBPM4 的同学，会觉得 Activiti5 很亲切O(∩_∩)O哈哈~</p>
-<h1 id="1-工作流生命周期"><a href="#1-工作流生命周期" class="headerlink" title="1 工作流生命周期"></a>1 工作流生命周期</h1><p>一个完整的工作流生命周期会经过以下 5 个阶段，并迭代循环：</p>
-<p><img src="https:////upload-images.jianshu.io/upload_images/3386108-2d2e2cd2b3d493bd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/401" alt="img"></p>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">阶段</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">定义</td>
-<td>业务需求人员收集业务需求，然后交由开发人员加工转化为计算机可以识别的流程定义。</td>
-</tr>
-<tr>
-<td style="text-align:center">发布</td>
-<td>开发人员打包各种资源，然后在系统管理平台中发布流程定义（包括流程定义文件 、自定义表单 、 任务监听类等资源 ）。</td>
-</tr>
-<tr>
-<td style="text-align:center">执行</td>
-<td>流程引擎按照事先定义好的流程，以任务驱动的方式予以执行 。</td>
-</tr>
-<tr>
-<td style="text-align:center">监控</td>
-<td>监控依赖执行阶段 。 业务人员在办理任务的同时，引擎会收集每个任务的办理结果，然后根据结果做出处理。</td>
-</tr>
-<tr>
-<td style="text-align:center">优化</td>
-<td>对整个流程的运行结果进行分析，在此基础上进一步改进，并再次开始一个新的周期。</td>
-</tr>
-</tbody>
-</table>
-<h1 id="2-BPMN"><a href="#2-BPMN" class="headerlink" title="2 BPMN"></a>2 BPMN</h1><p>BPMN 是 Business Process Modeling Notation 的简称，即业务流程建模与标注。</p>
-<p>BPMN 定义了一个业务流程图，这个流程图被设计用于创建业务流程操作的图形化模型 。 而一个业务流程模型（ Business Process Model ），指一个由图形对象（ graphical objects ）组成的网状图，图形对象包括活动（ activities) 和用于定义这些活动执行顺序的流程控制器（ flow controls ） 。</p>
-<h1 id="3-Activiti-特性"><a href="#3-Activiti-特性" class="headerlink" title="3 Activiti 特性"></a>3 Activiti 特性</h1><h2 id="3-1-MyBatis"><a href="#3-1-MyBatis" class="headerlink" title="3.1 MyBatis"></a>3.1 MyBatis</h2><p>Activiti 的设计思想是简洁 、 快速 。 所以它选择了MyBatis 作为数据持久层框架，从而可以通过最优的 SQL 语句执行 Command ，仅凭如此就能让引擎在速度上保持最高的性能 。</p>
-<h2 id="3-2-服务接口"><a href="#3-2-服务接口" class="headerlink" title="3.2 服务接口"></a>3.2 服务接口</h2><p>Activiti 提供了 7 个服务接口，都通过 ProcessEngine 来获取，并且支持链式编程风格：</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">服务接口</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">RepositoryService</td>
-<td>仓库服务，用于管理仓库，比如部署或删除流程定义、读取流程资源等。</td>
-</tr>
-<tr>
-<td style="text-align:center">IdentifyService</td>
-<td>身份服务，管理用户、组以及它们之间的关系。</td>
-</tr>
-<tr>
-<td style="text-align:center">RuntimeService</td>
-<td>运行时服务，管理所有正在运行的流程实例、任务等对象。</td>
-</tr>
-<tr>
-<td style="text-align:center">TaskService</td>
-<td>任务服务，管理任务。</td>
-</tr>
-<tr>
-<td style="text-align:center">FormService</td>
-<td>表单服务，管理和流程、任务相关的表单。</td>
-</tr>
-<tr>
-<td style="text-align:center">HistroyService</td>
-<td>历史服务，管理历史数据。</td>
-</tr>
-<tr>
-<td style="text-align:center">ManagementService</td>
-<td>引擎管理服务，比如管理引擎的配置、数据库和作业等核心对象。</td>
-</tr>
-</tbody>
-</table>
-<h2 id="3-3-流程设计器"><a href="#3-3-流程设计器" class="headerlink" title="3.3 流程设计器"></a>3.3 流程设计器</h2><p>与 jBPM 类似，Activiti 也提供了基于 Eclipse 的流程设计器 —— Eclipse Designer。 此外还有 Signavio 公司为 Activiti 定制的基于 Web 的 流程设计器 —— Activiti Modeler。</p>
-<h2 id="3-4-原生支持-Spring"><a href="#3-4-原生支持-Spring" class="headerlink" title="3.4 原生支持 Spring"></a>3.4 原生支持 Spring</h2><p>Activiti 可以很容易与 Spring 集成，这对于管理事务和解析表达式来说，非常方便。</p>
-<h2 id="3-5-分离运行时数据与历史数据"><a href="#3-5-分离运行时数据与历史数据" class="headerlink" title="3.5 分离运行时数据与历史数据"></a>3.5 分离运行时数据与历史数据</h2><p>这一特性与 jBPM4 的设计理念一脉相承。这样的设计架构使得引擎可以快速地读取运行时数据，只有在需要时才会从历史表中查询历史数据。 这样可以极大地提高数据的存取效率。</p>
-<h1 id="4-Activiti-架构"><a href="#4-Activiti-架构" class="headerlink" title="4 Activiti 架构"></a>4 Activiti 架构</h1><p><img src="https:////upload-images.jianshu.io/upload_images/3386108-85703f6222739969.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/612" alt="img"></p>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">组件</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">流程引擎（Activiti Engine）</td>
-<td>提供针对 BPMN 2.0 规范的解析；执行 、创建和管理流程实例与任务；以及查询历史记录并根据结果生成报表等功能。</td>
-</tr>
-<tr>
-<td style="text-align:center">业务模型设计器（Activiti Modeler）</td>
-<td>由 Signavio 公司设计实现，适用于业务人员把需求转换为流程定义。</td>
-</tr>
-<tr>
-<td style="text-align:center">开发模型设计器（Activiti Designer）</td>
-<td>开发人员可以导入业务需求人员用业务模型设计器设计的流程定义文件（ XML 格式），这样就可以进一步加工成为可以运行的流程定义信息 。</td>
-</tr>
-<tr>
-<td style="text-align:center">流程管理器（Activiti Explorer）</td>
-<td>用于管理仓库、用户、组、流程实例和任务等流程对象。</td>
-</tr>
-<tr>
-<td style="text-align:center">流程 REST 服务（Activiti REST）</td>
-<td>提供 Restful 风格的服务，允许客户端以 JSON 的数据格式与引擎的 REST API 进行交互。</td>
-</tr>
-</tbody>
-</table>
-
+<p>创始人 Tom Baeyens 曾经是 JBoss jBPM 的项目架构师，所以之前接触过 jBPM4 的同学，会觉得 Activiti5 很亲切。</p>
+        
+          <a class="article-more-link" href="/2019/04/14/带你进入-Activiti-工作流的世界/">阅读全文...</a>
+        
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/04/14/带你进入-Activiti-工作流的世界/" data-id="cjugvmqay00004y7fcfxt5zj1" class="article-share-link">分享</a>
+      <a data-url="http://yoursite.com/2019/04/14/带你进入-Activiti-工作流的世界/" data-id="cjugvzm5900026p7fk268gdnv" class="article-share-link">分享</a>
       
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/activiti/">activiti</a></li></ul>
+
     </footer>
 
   </div>
@@ -251,89 +147,16 @@
 
       
         <h2 id="Hexo-guthub搭建属于自己的个人博客-Mac环境下"><a href="#Hexo-guthub搭建属于自己的个人博客-Mac环境下" class="headerlink" title="Hexo+guthub搭建属于自己的个人博客(Mac环境下)"></a>Hexo+guthub搭建属于自己的个人博客(Mac环境下)</h2><p>因为最近要写博客考虑了很多最后还是选择了自建博客顺便结合一下我的公众号同时发布，下面就介绍一下如何使用hexo+github搭建自己的博客，当然也可以使用码云 速度比github快的多 但是码云的pages很烦每次必须手动去发布一下除非你花钱开通了pro。由于我使用的是mac所以就讲一下mac下的搭建方法。首先你要有一个github账号，怎么注册我就不说了，不会的自行百度。Mac本身自带了git所以这里就不讲git的安装了。</p>
-<h3 id="1-安装node"><a href="#1-安装node" class="headerlink" title="1.安装node"></a>1.安装node</h3><p>由于hexo是基于node.js的一个静态页面博客生成框架(以下就简称node)，所以首先需要安装node，如果不知道自己有没有安装node，打开终端然后输入以下命令来查看是否已经安装了node。</p>
-<p>输入命令：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">node -v</span><br></pre></td></tr></table></figure>
-<p>如果像下图这样显示版本号则说明已安装node.js</p>
-<p><img src="/images/temp/屏幕快照 2019-04-12 下午10.24.26.png" alt></p>
-<p>如果没有显示版本号则需要自己安装了，一种方式是从<a href="https://nodejs.org/en/" target="_blank" rel="noopener">官网</a>下载安装包安装，另一种则是通过brew来安装node，mac下当然推荐使用brew来安装了，首先打开<a href="https://brew.sh/index_zh-cn" target="_blank" rel="noopener">homebrew官网</a>，粘贴主页上的命令到终端即可安装完成.</p>
-<p><img src="/images/temp/屏幕快照 2019-04-12 下午10.39.16.png" alt></p>
-<p>安装完成后只需要在终端输入</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">brew link node</span><br><span class="line">brew uninstall node</span><br><span class="line">brew install node</span><br></pre></td></tr></table></figure>
-<p>再次输入 node -v 如果显示了版本号，这样就成功的安装了最新版的node.js</p>
-<h3 id="2-安装hexo"><a href="#2-安装hexo" class="headerlink" title="2.安装hexo"></a>2.安装hexo</h3><p>1.使用npm安装hexo</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
-<p>2.初始化hexo目录</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo init &lt;folder&gt; #我的是hexo_site#</span><br><span class="line">cd &lt;folder&gt;</span><br><span class="line">npm install</span><br></pre></td></tr></table></figure>
-<p>新建完成后，指定文件夹的目录如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">├── _config.yml</span><br><span class="line">├── package.json</span><br><span class="line">├── scaffolds</span><br><span class="line">├── source</span><br><span class="line">|   ├── _drafts</span><br><span class="line">|   └── _posts</span><br><span class="line">└── themes</span><br></pre></td></tr></table></figure>
-<p>下面来简单的介绍一下比较重要的文件</p>
-<p><code>_config.yml</code>：网站的配置文件，可以在此配置大部分参数，主题中也会有一个同名的主题配置文件，稍后讲解。<br><code>source</code>：资源文件夹是存放用户资源的地方。除 posts 文件夹之外，开头命名为 (下划线)的文件 / 文件夹和隐藏的文件将会被忽略。Markdown 和 HTML 文件会被解析并放到 public 文件夹，而其他文件会被拷贝过去。<br><code>themes</code>：主题文件夹，后面我们使用的next主题即会存放在此。<br><code>_posts</code>：存储你发表在博客上的文章，当Hexo 初始化一个站点时，里面会有一篇默认的博文。</p>
-<p>3.Hexo 配置<br>Hexo配置主要在_config.yml文件中，下面是一些简单的配置，更具体详细的配置可以查看<a href="https://hexo.io/zh-cn/docs/" target="_blank" rel="noopener">Hexo官方文档</a>.</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">paramate</th>
-<th style="text-align:center">description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">title</td>
-<td style="text-align:center">网站标题</td>
-</tr>
-<tr>
-<td style="text-align:center">subtitle</td>
-<td style="text-align:center">网站副标题</td>
-</tr>
-<tr>
-<td style="text-align:center">description</td>
-<td style="text-align:center">网站描述</td>
-</tr>
-<tr>
-<td style="text-align:center">author</td>
-<td style="text-align:center">您的名字</td>
-</tr>
-<tr>
-<td style="text-align:center">language</td>
-<td style="text-align:center">网站使用的语言</td>
-</tr>
-<tr>
-<td style="text-align:center">timezone</td>
-<td style="text-align:center">网站时区。Hexo 默认使用您电脑的时区。时区列表。比如说：America/New_York, Japan, 和 UTC 。</td>
-</tr>
-</tbody>
-</table>
-<p>4.部署到github</p>
-<p>首先需要安装 hexo-deployer-git</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
-<p>安装完成后，进入刚才新建的博客文件夹内，我的是hexo_site</p>
-<p><img src="/images/temp/屏幕快照 2019-04-12 下午10.51.50.png" alt></p>
-<p>5.编辑配置文件</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim _config.yml</span><br></pre></td></tr></table></figure>
-<p>修改_config.yml文件中的配置如下：</p>
-<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">deploy:</span></span><br><span class="line"><span class="attr">  type:</span> <span class="string">git</span></span><br><span class="line"><span class="attr">  repo:</span> <span class="string">&lt;repository</span> <span class="string">url&gt;</span> <span class="comment">#你的 【你的名字】.github.io  这一项目的git仓库地址#</span></span><br><span class="line"><span class="attr">  branch:</span> <span class="string">master</span></span><br><span class="line"><span class="attr">  message:</span> <span class="string">[message]</span> <span class="comment">#可不填写#</span></span><br></pre></td></tr></table></figure>
-<p>注意：在配置所有的yml文件时候包括 theme中的_config.yml，在所有的冒号后面都要加一个空格否则hexo命令会出错，接下来执行以下命令：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo clean   #清除</span><br><span class="line">hexo g       #生成静态页面</span><br><span class="line">hexo d			 #部署到git仓库</span><br></pre></td></tr></table></figure>
-<p>现在，登录到你的github pages 上查看你的博客吧。直接在浏览器命令行键入 ：</p>
-<p><code>http://&lt;你的GitHub用户名&gt;.github.io</code> </p>
-<h3 id="3-主题安装"><a href="#3-主题安装" class="headerlink" title="3.主题安装"></a>3.主题安装</h3><p>1.可以从<a href="https://hexo.io/themes/" target="_blank" rel="noopener">官方的主题</a>里面挑选自己喜欢的主题，所有的主题安装方法基本都大同小异具体参照文档来搞，这里就简单介绍一下最核心的几点，首先切换到hexo文件夹下： </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd hexo-site  #cd到自己的站点 我的是hexo-site#</span><br><span class="line">git clone https://github.com/huyingjie/hexo-theme-A-RSnippet.git themes/a-rsnippet #拉取主题到本地 themes文件夹下</span><br></pre></td></tr></table></figure>
-<p>然后修改_config.yml配置文件：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim _config.yml</span><br></pre></td></tr></table></figure>
-<p>切换主题为刚才下载的 a-rsnippet ：</p>
-<p><img src="/images/temp/屏幕快照 2019-04-12 下午11.15.13.png" alt></p>
-<p>然后esc   :wq 保存</p>
-<p>接着我们来更新到git</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo g</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>
-<p>然后打开你的博客地址 你的用户名.github.io 就可以查看效果了，具体详细的配置请根据不同主题的文档来修改，这里就不一一介绍了。</p>
-<p>enjoy!!</p>
-
+        
+          <a class="article-more-link" href="/2019/04/11/Hexo-github搭建属于自己的个人博客/">阅读全文...</a>
+        
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/04/11/Hexo-github搭建属于自己的个人博客/" data-id="cjugvmqb600024y7f79k1mqvn" class="article-share-link">分享</a>
+      <a data-url="http://yoursite.com/2019/04/11/Hexo-github搭建属于自己的个人博客/" data-id="cjugvzm5100006p7fb3uxbas0" class="article-share-link">分享</a>
       
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li></ul>
+
     </footer>
 
   </div>
